@@ -124,7 +124,7 @@ impl Default for Options {
             canvas_width_ns: 0.0,
             sideways_pan_in_pixels: 0.0,
 
-            scroll_zoom_speed: 0.01,
+            scroll_zoom_speed: 0.05,
 
             cull_width: 0.5,
             rect_height: 16.0,
