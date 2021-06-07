@@ -248,18 +248,18 @@ impl ProfilerUi {
             hovered_frame = self.show_frames(ui);
 
             if self.paused.is_some() {
-                if ui.button(im_str!("Resume / Show latest"), Default::default()) {
+                if ui.button(im_str!("Resume / Show latest")) {
                     self.paused = None;
                 }
             } else {
-                if ui.button(im_str!("Pause"), Default::default()) {
+                if ui.button(im_str!("Pause")) {
                     let latest = GlobalProfiler::lock().latest_frame();
                     if let Some(latest) = latest {
                         self.pause_and_select(latest);
                     }
                 }
-                ui.same_line(0.0);
-                if ui.button(im_str!("Forget slowest frames"), Default::default()) {
+                ui.same_line();
+                if ui.button(im_str!("Forget slowest frames")) {
                     GlobalProfiler::lock().clear_slowest();
                 }
             }
@@ -288,7 +288,7 @@ impl ProfilerUi {
         ));
 
         ui.text("Drag to pan. Scroll to zoom. Click to focus. Double-click to reset.");
-        ui.same_line(0.0);
+        ui.same_line();
         ui.checkbox(
             im_str!("Merge children with same ID"),
             &mut self.options.merge_scopes,
@@ -484,7 +484,7 @@ impl ProfilerUi {
         self.is_panning &= !ui.is_mouse_released(pan_button);
 
         let pan_delta = if self.is_panning {
-            let pan_delta = ui.mouse_drag_delta(pan_button);
+            let pan_delta = ui.mouse_drag_delta();
             ui.reset_mouse_drag_delta(pan_button);
             pan_delta
         } else {
@@ -872,7 +872,7 @@ fn merge_scope_tooltip(ui: &Ui<'_>, merge: &MergeScope<'_>) {
 
 fn paint_thread_info(info: &mut Info<'_>, thread_info: &ThreadInfo, pos: [f32; 2]) {
     let text = &thread_info.name;
-    let text_size = info.ui.calc_text_size(&ImString::new(text), false, 0.0);
+    let text_size = info.ui.calc_text_size(&ImString::new(text));
 
     info.draw_list
         .add_rect(
