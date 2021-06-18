@@ -16,7 +16,7 @@ include = [ "**/*.rs", "Cargo.toml"]
 doctest = false
 
 [dependencies]
-imgui = { git = "https://github.com/dbr/imgui-rs.git", rev = "744ec6651496a24535e28739eea8873c776d383a", features=["freetype"] }
-imgui-sys = { git = "https://github.com/dbr/imgui-rs.git", rev = "744ec6651496a24535e28739eea8873c776d383a", features=["freetype"] }
+imgui = { git = "https://github.com/dbr/imgui-rs.git", rev = "744ec6651496a24535e28739eea8873c776d383a" }
+imgui-sys = { git = "https://github.com/dbr/imgui-rs.git", rev = "744ec6651496a24535e28739eea8873c776d383a" }
 puffin = { version = "0.5.0", path = "../puffin" }
 serde = { version = "1", features = ["derive"] }
